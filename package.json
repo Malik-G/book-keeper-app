@@ -1,0 +1,27 @@
+{
+  "name": "pg-get-post-activity",
+  "version": "1.0.0",
+  "description": "``` ,________,         .------,          .------,         .------. |________|       ,'_____,'|        ,'_____,'|        (        ) |        |       |      | |        | ____ | |        |~------~| |        |       |      | |        | ____ | |        |~------~| |        |       |      | ;        | ____ | ;        |~------~| |________|       |______|'         |______|'         `.______.'  HTML/CSS          jQuery        Node / Express      PostgreSQL ``` Let's build a basic bookstore!",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "pg": "^7.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Malik-G/pg-get-post-activity.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Malik-G/pg-get-post-activity/issues"
+  },
+  "homepage": "https://github.com/Malik-G/pg-get-post-activity#readme"
+}
