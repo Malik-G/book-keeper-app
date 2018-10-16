@@ -21,7 +21,7 @@ Set up a `bookstore` database.
 Add a `books` table with columns for:
  - `title`: the name of the book - required, allow up to 250 characters
  - `author`: the author of the book - required, allow up to 100 characters
- - `published`: the year (only) originally published - optional 
+ - `published`: the date originally published - optional 
 
 
 ## Base Mode
