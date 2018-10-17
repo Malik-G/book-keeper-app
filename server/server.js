@@ -7,7 +7,7 @@ app.use( bodyParser.urlencoded({ extended: true }) );
 app.use( bodyParser.json() );
 
 // Static files (might not get to setting up a client, but just in case)
-app.use( express.static('public/static') );
+app.use( express.static('server/public') );
 
 const Pool = pg.Pool;
 const pool = new Pool({
@@ -42,11 +42,11 @@ app.get('/books', (req, res) => {
 
 app.post('/books', (req, res) => {
    const newBook = req.body;
-   const sqlText = `INSERT INTO books (author, title, published) VALUES 
+   const sqlText = `INSERT INTO books (title, author, published) VALUES 
    ($1, $2, $3)`;
    // Let sql sanitize your inputs (NO Bobby Drop Tables here!)
    // the $1, $2, etc get substituted with the values from the array below
-   pool.query(sqlText, [newBook.author, newBook.title, newBook.published])
+   pool.query(sqlText, [newBook.title, newBook.author, newBook.published])
      .then( (result) => {
        console.log(`Added song to the database`, newBook);
        res.sendStatus(201);

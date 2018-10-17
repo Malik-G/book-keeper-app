@@ -4,10 +4,35 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <script src="vendors/jquery-3.3.1.min.js"></script>
+   <script> scr="vendors/bootstrap.min.js"</script>
    <script src="scripts/client.js"></script>
+   <link rel="stylesheet" href="vendors/bootstrap.min.css">
+   <link rel="stylesheet" href="styles/style.css">
+   <link href="https://fonts.googleapis.com/css?family=Abel|Josefin+Sans" rel="stylesheet">
    <title>Document</title>
 </head>
 <body>
-   
+   <h1 style="text-align: center;">Book Collection</h1>
+   <div class="container">
+      <h3>Add a New Book:</h3>
+      <form>
+         <input id="titleInput" type="text" placeholder="Enter Book Title">
+         <input id="authorInput" type="text" placeholder="Enter the Author">
+         <input id="dateInput" type="text" placeholder="Published: mm-dd-yyyy">
+         <button id="addButton">Submit</button>
+      </form>
+      <div id="bookCollectionDisplay">
+         <h3>Current Book Collection:</h3>
+         <table class="table table-striped">
+            <thead class="thead-dark">
+               <th>Title</th>
+               <th>Author</th>
+               <th>Published</th>
+            </thead>
+            <tbody id="bookTable"></tbody>
+         </table>
+      </div>
+   </div>
 </body>
 </html>

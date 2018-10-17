@@ -1,0 +1,15 @@
+body {
+   background: rgb(253,245,230);
+}
+
+#bookCollectionDisplay {
+   margin-top: 50px;
+}
+
+h1, h2, h3 {
+   font-family: 'Josefin Sans';
+}
+
+table  {
+   font-family: 'Abel';
+}
