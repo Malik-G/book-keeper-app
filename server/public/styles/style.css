@@ -13,3 +13,7 @@ h1, h2, h3 {
 table  {
    font-family: 'Abel';
 }
+
+.hide {
+   display: none;
+}

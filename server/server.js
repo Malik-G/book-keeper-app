@@ -57,6 +57,22 @@ app.post('/books', (req, res) => {
      })
  })
 
+ // req.params refers to the params specified in the the url template,
+ // so in this case :id is the param, therefore use req.params.id
+ app.delete('/books/:id', (req, res) => {
+  let reqId = req.params.id;
+  let sqlText = 'DELETE FROM books WHERE book_id=$1';
+  pool.query(sqlText, [reqId])
+    .then( (result) => {
+      console.log(req);
+      res.sendStatus(200);
+    })
+    .catch( (error) => {
+      console.log(`Error deleting`);
+      res.sendStatus(500); // Good server always responds
+    })
+ })
+
  app.listen( port, () => {
   console.log('up and running on port ', port);
 });
