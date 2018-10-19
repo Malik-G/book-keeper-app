@@ -1,22 +1,44 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const pg = require('pg');
+const url = require('url');
 const app = express();
 const port = process.env.PORT || 5000;
 app.use( bodyParser.urlencoded({ extended: true }) );
 app.use( bodyParser.json() );
-
 // Static files (might not get to setting up a client, but just in case)
 app.use( express.static('server/public') );
 
-const Pool = pg.Pool;
-const pool = new Pool({
-    database: 'bookstore', // database name (this will change)
-    host: 'localhost', // where to find the database
-    port: 5432,        // port for finding the database
-    max: 10,           // max number of connections for the pool
-    idleTimeoutMillis: 30000 // 30 seconds before timeout/cancel query
-});
+let config = {};
+
+if (process.env.DATABASE_URL) {
+  // Heroku gives a url, not a connection object
+  // https://github.com/brianc/node-pg-pool
+  const params = url.parse(process.env.DATABASE_URL);
+  const auth = params.auth.split(':');
+
+  config = {
+    user: auth[0],
+    password: auth[1],
+    host: params.hostname,
+    port: params.port,
+    database: params.pathname.split('/')[1],
+    ssl: true, // heroku requires ssl to be true
+    max: 10, // max number of clients in the pool
+    idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
+  };
+} else {
+  config = {
+    host: 'localhost', // Server hosting the postgres database
+    port: 5432, // env var: PGPORT
+    database: process.env.DATABASE_NAME || 'bookstore', // CHANGE THIS LINE! env var: PGDATABASE, this is likely the one thing you need to change to get up and running
+    max: 10, // max number of clients in the pool
+    idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
+  };
+}
+
+const pool = new pg.Pool(config);
+//const Pool = pg.Pool;
 
 // Tests the connection
 pool.on('connect', () => {
