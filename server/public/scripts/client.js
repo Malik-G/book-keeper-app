@@ -41,23 +41,40 @@ function addBook(event){
    }).then( function(response) {
       console.log('POST successful');
       getCollection();
+      $('#titleInput').val('');
+      $('#authorInput').val('');
+      $('#dateInput').val('');
    }).catch( function(response) {
       console.log('Error posting to server');
    })
 }
 
 function deleteBook(){
-   let rowClicked = $(this).closest('tr');
-   let bookId = rowClicked.data('book_id');
-   $.ajax({
-      method: 'DELETE',
-      url: `/books/${bookId}`
-   }).then(function(response){
-      console.log('Successfully deleted from database');
-      getCollection();
-   }).catch(function(error) {
-      console.log('Error response from database:', error);
-  })
+   swal({
+      title: "Delete Task?",
+      text: "Think twice...",
+      icon: "warning",
+      buttons: true
+   })
+   .then((willDelete) => {
+      if(willDelete) {
+         swal("Successfully Deleted!", {icon: "success"});
+         let rowClicked = $(this).closest('tr');
+         let bookId = rowClicked.data('book_id');
+         $.ajax({
+            method: 'DELETE',
+            url: `/books/${bookId}`
+         }).then(function(response){
+            console.log('Successfully deleted from database');
+            getCollection();
+         }).catch(function(error) {
+            console.log('Error response from database:', error);
+         })
+      }
+      else {
+         swal("No Deletion...");
+      }
+   });
 }
 
 function editBook(){
