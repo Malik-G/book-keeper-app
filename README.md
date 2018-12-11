@@ -1,4 +1,5 @@
 # Book Keeper
+This app allows the user to create and edit a list of books. These entries are saved to a database.
 
 ## Technologies
 ```
