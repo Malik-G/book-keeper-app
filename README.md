@@ -27,7 +27,7 @@ Add a `books` table with columns for:
 - [ ] `index.html` page shows all books (Ajax GET)
 - [ ] Page allows you to add a new book (Ajax POST)
 - [ ] Clear form on sucessful add of new book
-- [ ] Page should refresh with up to date data after new book added
+- [ ] Page should refresh with up to date data after a book is added or deleted
 
 ## Stretch Goals
 - Fix book editing
