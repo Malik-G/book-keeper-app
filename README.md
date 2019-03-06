@@ -31,4 +31,3 @@ Add a `books` table with columns for:
 
 ## Stretch Goals
 - Fix book editing
-- Add confirm alert for deletions
